@@ -6,13 +6,8 @@ const Navbar = () => {
             path: '/'
         },
         {
-            title: 'Category',
-            path: '/Category'
-
-        },
-        {
-            title: 'Products',
-            path: '/products'
+            title: 'Pets',
+            path: '/pets'
         },
         {
             title: 'Contact',
