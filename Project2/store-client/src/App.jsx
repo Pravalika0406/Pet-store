@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
-
 import WebLayout from "./layout/WebLayout";
 import AdminLayout from "./layout/AdminLayout";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
@@ -9,7 +8,6 @@ import TwClasses from "./pages/TwClasses";
 import AdminOrders from "./pages/Admin/AdminOrders";
 import AdminUsers from "./pages/Admin/AdminUsers";
 import AdminSettings from "./pages/Admin/AdminSettings";
-
 import AdminPets from "./pages/Admin/AdminPets";
 import Pets from "./pages/Pets";
 // import {} from 'react'
@@ -22,6 +20,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/pets" element={<Pets />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path='/temp' element={<TwClasses />} />
             {/* <Route path='/temp' element={<TwClasses />} /> */}
           </Route>
           <Route element={<AdminLayout />}>
@@ -36,5 +35,4 @@ const App = () => {
     </>
   );
 };
-
 export default App;

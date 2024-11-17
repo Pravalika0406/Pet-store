@@ -49,6 +49,8 @@ const AdminPets = () => {
     }
   };
   const editHelper = () => {
+    setCurrentPet(pet)
+    console.log(pet)
     setShowEdit(true);
   };
   const handleDelete = async (id) => {

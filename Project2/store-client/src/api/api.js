@@ -1,17 +1,67 @@
-import axios from "axios";
 
-//const API = "https://671b70f62c842d92c37fec39.mockapi.io/productsapp/pets"
-const API = "http://localhost:4000";
+import axios from 'axios'
+import { getToken } from '../service/auth'
 
-const getPets = () => axios.get(`${API}/pets/all`) / OrderEndPonts;
 
-const addPet = (pets) => axios.post(`${API}/pets/add`, pet);
-const deletePet = (id) => axios.delete(`${API}/pets/delete/${id}`);
-const getOrders = () => axios.get(`${API}/orders/all`);
+const API = 'http://localhost:3000'
+
+
+const axiosInstance = axios.create({
+    baseURL: API,
+})
+
+axiosInstance.interceptors.request.use(
+    (config) => {
+        const token = getToken()
+        if (token) {
+            config.headers.Authorization = `${token}`
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error)
+    }
+)
+
+// ProductEndPonts
+const getPets = () => axios.get(`${API}/pets/all`)
+const getPetsCount = () => axiosInstance.get(`/pets/count`)
+const addPet= (pet) => axios.post(`${API}/pets/add`, pet)
+const editPet = (pet, id) => axios.put(`${API}/pets/edit/${id}`, pet)
+const deletePet = (id) => axios.delete(`${API}/pets/delete/${id}`)
+
+// OrderEndPonts
+const getOrders = () => axios.get(`${API}/orders/all`)
+const getOrdersCount = () => axiosInstance.get(`/orders/count`)
+const deleteOrder = (id) => axios.delete(`${API}/orders/delete/${id}`)
+
+
 //UserEndPoints
-const getUsers = () => axios.get(`${API}/users/all`);
+const getUsers = () => axiosInstance.get(`/users/all`)
+const getUsersCount = () => axiosInstance.get(`/users/count`)
+const addUser = (user) => axiosInstance.post(`/users/add`, user)
+const editUser = (user, id) => axios.put(`${API}/users/edit/${id}`, user)
+const deleteUser = (id) => axios.delete(`${API}/users/delete/${id}`)
+const resetPassword = (password, id) => axios.put(`${API}/users/resetpassword/${id}`, password)
 //AuthEndponts
-const Login = (data) => axios.post(`${API}/auth/login`, credentials);
-const Register = (credentials) =>
-  axios.post(`${API}/auth/register`, credentials);
-export { getPets, getOrders, getUsers, Login, Register, addPet, deletePet };
+const Login = (credentials) => axios.post(`${API}/auth/login`, credentials)
+const Register = (credentials) => axios.post(`${API}/auth/register`, credentials)
+
+export {
+    Login,
+    Register,
+    getPets,
+    getPetsCount,
+    addPet,
+    editPet,
+    deletePet,
+    getUsers,
+    getUsersCount,
+    addUser,
+    editUser,
+    deleteUser,
+    resetPassword,
+    getOrders,
+    getOrdersCount,
+    deleteOrder
+}
