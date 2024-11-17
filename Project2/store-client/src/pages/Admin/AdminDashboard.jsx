@@ -16,7 +16,7 @@ const AdminDashboard = () => {
       }
       const petresponse = await getPetsCount()
       if (petresponse.status === 200) {
-        setProducts(petresponse.data.count)
+        setPets(petresponse.data.count)
       }
       const orderresponse = await getOrdersCount()
       if (orderresponse.status === 200) {
