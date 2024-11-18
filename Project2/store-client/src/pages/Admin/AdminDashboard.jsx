@@ -1,11 +1,14 @@
+
+
+
 import React, { useEffect, useState } from 'react'
 import AdminDashboardHomeCards from '../../components/Admin/AdminDashboardHomeCards'
-import { getOrdersCount, getPetsCount, getUsersCount } from '../../api/api'
+import { getOrdersCount, getProductsCount, getUsersCount } from '../../api/api'
 import { toast } from 'sonner'
 import { Loader2 } from 'lucide-react'
 const AdminDashboard = () => {
   const [users, setUsers] = useState(0)
-  const [pets, setPets] = useState(0)
+  const [products, setProducts] = useState(0)
   const [orders, setOrders] = useState(0)
   const [loading, setLoading] = useState(true)
   const fetchData = async () => {
@@ -14,9 +17,9 @@ const AdminDashboard = () => {
       if (userresponse.status === 200) {
         setUsers(userresponse.data.count)
       }
-      const petresponse = await getPetsCount()
-      if (petresponse.status === 200) {
-        setProducts(petresponse.data.count)
+      const productresponse = await getProductsCount()
+      if (productresponse.status === 200) {
+        setProducts(productresponse.data.count)
       }
       const orderresponse = await getOrdersCount()
       if (orderresponse.status === 200) {
@@ -42,7 +45,7 @@ const AdminDashboard = () => {
   }
   return (
     <div className='w-full min-h-[80vh] flex justify-center items-center'>
-      <AdminDashboardHomeCards pets={pets} orders={orders} users={users} />
+      <AdminDashboardHomeCards products={products} orders={orders} users={users} />
     </div>
   )
 }

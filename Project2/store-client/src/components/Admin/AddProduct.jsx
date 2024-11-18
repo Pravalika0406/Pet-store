@@ -1,7 +1,7 @@
 import { Plus } from 'lucide-react'
 import React from 'react'
 
-const AddPet = () => {
+const AddProduct = () => {
     return (
         <>
             <button className='w-10 h-10 font-bold flex justify-center items-center border-2 border-green-500 rounded-md text-green-500 shadow-md hover:text-white hover:bg-green-500 hover:shadow-md hover:shadow-green-400'>
@@ -11,4 +11,4 @@ const AddPet = () => {
     )
 }
 
-export default AddPet
+export default AddProduct

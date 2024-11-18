@@ -24,16 +24,17 @@ axiosInstance.interceptors.request.use(
 )
 
 // ProductEndPonts
-const getPets = () => axios.get(`${API}/pets/all`)
-const getPetsCount = () => axiosInstance.get(`/pets/count`)
-const addPet= (pet) => axios.post(`${API}/pets/add`, pet)
-const editPet = (pet, id) => axios.put(`${API}/pets/edit/${id}`, pet)
-const deletePet = (id) => axios.delete(`${API}/pets/delete/${id}`)
+const getProducts = () => axios.get(`${API}/products/all`)
+const getProductsCount = () => axiosInstance.get(`/products/count`)
+const addProduct = (product) => axiosInstance.post(`${API}/products/add`, product)
+const editProduct = (product, id) => axiosInstance.put(`${API}/products/edit/${id}`, product)
+const deleteProduct = (id) => axiosInstance.delete(`${API}/products/delete/${id}`)
 
 // OrderEndPonts
-const getOrders = () => axios.get(`${API}/orders/all`)
+const getOrders = () => axiosInstance.get(`${API}/orders/all`)
+const addOrder = (order) => axiosInstance.post('/orders/add', order)
 const getOrdersCount = () => axiosInstance.get(`/orders/count`)
-const deleteOrder = (id) => axios.delete(`${API}/orders/delete/${id}`)
+const deleteOrder = (id) => axiosInstance.delete(`${API}/orders/delete/${id}`)
 
 
 //UserEndPoints
@@ -50,11 +51,11 @@ const Register = (credentials) => axios.post(`${API}/auth/register`, credentials
 export {
     Login,
     Register,
-    getPets,
-    getPetsCount,
-    addPet,
-    editPet,
-    deletePet,
+    getProducts,
+    getProductsCount,
+    addProduct,
+    editProduct,
+    deleteProduct,
     getUsers,
     getUsersCount,
     addUser,
@@ -62,6 +63,7 @@ export {
     deleteUser,
     resetPassword,
     getOrders,
+    addOrder,
     getOrdersCount,
     deleteOrder
 }

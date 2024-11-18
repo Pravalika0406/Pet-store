@@ -9,8 +9,8 @@ const AdminLeftBar = () => {
       path: '/admin/dashboard'
     },
     {
-      title: 'Pets',
-      path: '/admin/pets'
+      title: 'Products',
+      path: '/admin/products'
     },
     {
       title: 'Orders',
@@ -19,10 +19,7 @@ const AdminLeftBar = () => {
     {
       title: 'Users',
       path: '/admin/users'
-    },
-    {
-      title: 'Settings',
-      path: '/admin/settings'
+
     }
   ]
   const handleLogout = () => {
@@ -30,14 +27,14 @@ const AdminLeftBar = () => {
     Navigate('/')
   }
   return (
-    <div className='w-full h-screen shadow-purple-400 shadow-md flex justify-center items-center'>
+    <div className='w-full h-screen shadow-green-400 shadow-md flex justify-center items-center'>
       <div className='h-full w-full flex flex-col'>
-        <div className='h-[10%] w-full text-purple-500 flex justify-center font-bold text-2xl items-center'>
+        <div className='h-[10%] w-full text-green-500 flex justify-center font-bold text-2xl items-center'>
           Pet Store
         </div>
         <div className='h-[80%] w-full flex flex-col items-center '>
           {Linksdata.map((link, index) => (
-            <NavLink to={link.path} key={index} className='h-[10%] w-full px-8 hover:bg-purple-500/90 hover:text-white flex justify-start items-center rounded-sm shadow-md font-bold'>
+            <NavLink to={link.path} key={index} className='h-[10%] w-full px-8 hover:bg-green-500/90 hover:text-white flex justify-start items-center rounded-sm shadow-md font-bold'>
               {link.title}
             </NavLink>
           ))

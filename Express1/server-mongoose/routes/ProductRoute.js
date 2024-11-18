@@ -1,66 +1,66 @@
 const express = require('express')
 const router = express.Router();
-const Pets = require('../models/PetsModel')
+const Products = require('../models/ProductsModel')
 const validate = require('../config/auth')
 
 router.get('/count', async (req, res) => {
     try {
-        const count = await Pets.countDocuments()
+        const count = await Products.countDocuments()
         return res.status(200).json({ count: count })
     } catch (error) {
         return res.status(500).json({ message: error.message })
     }
 })
-// Method : GET  || API : localhost:3000/products/all
+// Method : GET  || API : localhost:3000/pets/all
 router.get('/all', async (req, res) => {
     try {
-        const pets = await Pets.find()
-        return res.status(200).json(pets)
+        const products = await Products.find()
+        return res.status(200).json(products)
     } catch (error) {
         return res.status(500).json({ message: error.message })
     }
 })
 
-// Method : POST  || API : localhost:3000/products/add
+// Method : POST  || API : localhost:3000/pets/add
 router.post('/add', async (req, res) => {
     try {
-        const newpet = new Pets(req.body)
-        const { name, img, price } = newpet
-        if (!name || !img || !price) {
+        const newproduct = new Products(req.body)
+        const { title, img, price } = newproduct
+        if (!title || !img || !price) {
             return res.status(400).json({ message: "All fields required" })
         }
-        await newpet.save()
-        return res.status(200).json(newpet)
+        await newproduct.save()
+        return res.status(200).json(newproduct)
     } catch (error) {
         return res.status(500).json({ message: error.message })
     }
 })
 
-// Method : PUT  || API : localhost:3000/products/edit/_id
+// Method : PUT  || API : localhost:3000/pets/edit/_id
 router.put('/edit/:id', async (req, res) => {
     try {
         const id = req.params.id
-        const existingpet = await Pets.findOne({ _id: id })
-        if (!existingpet) {
-            return res.status(404).json({ message: "Pet not found" })
+        const existingproduct = await Products.findOne({ _id: id })
+        if (!existingproduct) {
+            return res.status(404).json({ message: "Product not found" })
         }
-        const updatedpet = await Pets.findByIdAndUpdate(id, req.body, { new: true })
-        return res.status(200).json(updatedpet)
+        const updatedproduct = await Products.findByIdAndUpdate(id, req.body, { new: true })
+        return res.status(200).json(updatedproduct)
     } catch (error) {
         return res.status(500).json({ message: error.message })
     }
 })
 
-// Method : DELETE  || API : localhost:3000/products/delete/_id
+// Method : DELETE  || API : localhost:3000/pets/delete/_id
 router.delete('/delete/:id', async (req, res) => {
     try {
         const id = req.params.id
-        const existingpet = await Pets.findOne({ _id: id })
-        if (!existingpet) {
-            res.status(404).json({ message: "Pet not found" })
+        const existingproduct = await Products.findOne({ _id: id })
+        if (!existingproduct) {
+            res.status(404).json({ message: "Product not found" })
         }
-        await Pets.findByIdAndDelete(id)
-        return res.status(200).json({ message: "Pet Deleted" })
+        await Products.findByIdAndDelete(id)
+        return res.status(200).json({ message: "Product Deleted" })
     } catch (error) {
         return res.status(500).json({ message: error.message })
     }

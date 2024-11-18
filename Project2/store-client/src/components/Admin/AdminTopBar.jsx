@@ -8,7 +8,7 @@ const AdminTopBar = () => {
     setName(username)
   }, [])
   return (
-    <div className='w-full h-full shadow-purple-400 shadow-sm flex justify-end items-center px-4'>{name}</div>
+    <div className='w-full h-full shadow-green-400 shadow-sm flex justify-end items-center px-4'>{name}</div>
   )
 }
 
