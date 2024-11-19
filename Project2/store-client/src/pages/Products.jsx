@@ -86,7 +86,7 @@ const Products = () => {
                         <>
                             {
                                 fitlerProduct.map((product, index) => (
-                                    <ProductCard img={product.img} name={product.title} price={product.price} key={product._id} pid={product._id} auth={auth} uid={uid} />
+                                    <ProductCard img={product.img} title={product.title} price={product.price} key={product._id} pid={product._id} auth={auth} uid={uid} />
                                 ))
                             }
                         </>
